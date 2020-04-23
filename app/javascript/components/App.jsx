@@ -15,6 +15,7 @@ class App extends React.Component {
     }
 
     this.handleLogin = this.handleLogin.bind(this);
+    this.handleLogOut = this.handleLogOut.bind(this);
   }
 
   checkLoginStatus() {
@@ -49,6 +50,13 @@ class App extends React.Component {
       user: data.user
     });
   };
+
+  handleLogOut() {
+    this.setState({
+      loggedInStatus: "NOT_LOGGED_IN",
+      user: {}
+    });
+  }
   
 
   render() {
@@ -60,8 +68,10 @@ class App extends React.Component {
               exact path ={"/"}
               render ={props => (
                 <Home {...props}
-                loggedInStatus ={this.state.loggedInStatus} 
-                handleLogin={this.handleLogin} />
+                  loggedInStatus ={this.state.loggedInStatus} 
+                  handleLogin={this.handleLogin} 
+                  handleLogOut={this.handleLogOut} 
+                />
               )}
             />
 
@@ -69,7 +79,8 @@ class App extends React.Component {
               exact path ={"/dashboard"}
               render ={props => (
                 <Dashboard
-                loggedInStatus ={this.state.loggedInStatus} />
+                  loggedInStatus ={this.state.loggedInStatus} 
+                />
               )}
             />
 
