@@ -1,5 +1,6 @@
 import React from 'react';
-import SignUp from "./SignUp";
+import SignUp from './SignUp';
+import Login from './Login';
 
 class Home extends React.Component {
 
@@ -20,6 +21,7 @@ class Home extends React.Component {
       <h1>Home</h1>
       <h1>Status: {this.props.loggedInStatus}</h1>
       <SignUp handleSuccessfulAuth ={this.handleSuccessfulAuth}/>
+      <Login handleSuccessfulAuth ={this.handleSuccessfulAuth} />
     </div>
     );
   };
