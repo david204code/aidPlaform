@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Home from '../components/auth/Home';
 import Dashboard from '../components/auth/Dashboard';
+import Map from '../components/auth/Map';
 import axios from 'axios';
 
 class App extends React.Component {
@@ -81,6 +82,15 @@ class App extends React.Component {
                 <Dashboard
                   loggedInStatus ={this.state.loggedInStatus} 
                 />
+              )}
+            />
+
+            <Route 
+              exact path ={"/map"}
+              render ={props => (
+                <Map
+                  loggedInStatus ={this.state.loggedInStatus}
+                />  
               )}
             />
 
