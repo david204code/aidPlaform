@@ -1,6 +1,6 @@
 import React from 'react';
-import SignUp from './SignUp';
-import Login from './Login';
+import SignUp from '../auth/SignUp';
+import Login from '../auth/Login';
 import axios from 'axios';
 
 class Home extends React.Component {

@@ -1,9 +1,10 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import Home from '../components/auth/Home';
-import Dashboard from '../components/auth/Dashboard';
-import Map from '../components/auth/Map';
 import axios from 'axios';
+import Home from '../components/pages/Home';
+import Dashboard from '../components/pages/Dashboard';
+import Map from '../components/map/Map';
+import Navbar from '../components/pages/Navbar';
 
 class App extends React.Component {
 
@@ -64,6 +65,9 @@ class App extends React.Component {
     return (
       <div>
         <BrowserRouter>
+
+          <Navbar />
+
           <Switch>
             <Route 
               exact path ={"/"}
