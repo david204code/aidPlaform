@@ -1,10 +1,11 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import axios from 'axios';
+import Navbar from '../components/pages/Navbar';
 import Home from '../components/pages/Home';
 import Dashboard from '../components/pages/Dashboard';
 import Map from '../components/map/Map';
-import Navbar from '../components/pages/Navbar';
+import Help from './help/Help';
 
 class App extends React.Component {
 
@@ -95,6 +96,15 @@ class App extends React.Component {
                 <Map
                   loggedInStatus ={this.state.loggedInStatus}
                 />  
+              )}
+            />
+
+            <Route
+              exact path ={"/help"}
+              render ={props => (
+                <Help
+                  loggedInStatus ={this.state.loggedInStatus}
+                />
               )}
             />
 
