@@ -11,8 +11,8 @@ class Map extends React.Component {
 
     this.state = {
       viewport: {
-        latitude: 51.508,
         longitude: -0.140,
+        latitude: 51.508,
         zoom: 14,
         bearing: 0,
         pitch: 0
@@ -35,8 +35,8 @@ class Map extends React.Component {
               doubleClickZoom ={false}
             > 
         <Marker 
-          latitude={51.508} 
           longitude={-0.140} 
+          latitude={51.508} 
           offsetLeft={-20} 
           offsetTop={-10}
         >
