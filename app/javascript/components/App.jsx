@@ -13,53 +13,43 @@ class App extends React.Component {
     super();
 
     this.state = {
-      loggedInStatus: "NOT_LOGGED_IN",
+      isLoggedin: false,
       user: {}
-    }
+    };
+  };
 
-    this.handleLogin = this.handleLogin.bind(this);
-    this.handleLogOut = this.handleLogOut.bind(this);
-  }
+  componentDidMount() {
+    this.loginStatus()
+  };
 
-  checkLoginStatus() {
-    axios
-    .get("http://localhost:3000/logged_in", { withCredentials: true})
+  loginStatus = () => {
+    axios.get('http://localhost:3001/logged_in',
+    {withCredentials: true})
+
     .then(response => {
-      if (response.data.logged_in && this.state.loggedInStatus === "NOT_LOGGED_IN") {
-        this.setState({
-          loggedInStatus: "LOGGED_IN",
-          user: response.data.user
-        })
-      } else if (!response.data.logged_in && this.state.loggedInStatus === "LOGGED_IN") {
-        this.setState({
-          loggedInStatus: "NOT_LOGGED_IN",
-          user: {}
-        })
+      if (response.data.logged_in) {
+        this.handleLogin(response)
+      } else {
+        this.handleLogout()
       }
     })
-    .catch(error => {
-      console.log("check login error", error);
-    });
+    .catch(error => console.log('api errors:', error))
   };
-  
-  componentDidMount() {
-    this.checkLoginStatus();
-  }
-  
 
-  handleLogin(data) {
+
+  handleLogin = (data) => {
     this.setState({
-      loggedInStatus: "Logged_In",
+      isLoggedin: true,
       user: data.user
     });
   };
 
-  handleLogOut() {
+  handleLogout = () => {
     this.setState({
-      loggedInStatus: "NOT_LOGGED_IN",
+      isLoggedin: false,
       user: {}
     });
-  }
+  };
   
 
   render() {
@@ -74,9 +64,6 @@ class App extends React.Component {
               exact path ={"/"}
               render ={props => (
                 <Home {...props}
-                  loggedInStatus ={this.state.loggedInStatus} 
-                  handleLogin={this.handleLogin} 
-                  handleLogOut={this.handleLogOut} 
                 />
               )}
             />
@@ -85,7 +72,6 @@ class App extends React.Component {
               exact path ={"/dashboard"}
               render ={props => (
                 <Dashboard
-                  loggedInStatus ={this.state.loggedInStatus} 
                 />
               )}
             />
@@ -94,7 +80,6 @@ class App extends React.Component {
               exact path ={"/map"}
               render ={props => (
                 <Map
-                  loggedInStatus ={this.state.loggedInStatus}
                 />  
               )}
             />
@@ -103,7 +88,6 @@ class App extends React.Component {
               exact path ={"/help"}
               render ={props => (
                 <Help
-                  loggedInStatus ={this.state.loggedInStatus}
                 />
               )}
             />
