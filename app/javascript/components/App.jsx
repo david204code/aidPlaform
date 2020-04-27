@@ -6,6 +6,8 @@ import Home from '../components/pages/Home';
 import Dashboard from '../components/pages/Dashboard';
 import Map from '../components/map/Map';
 import Help from './help/Help';
+import Login from '../components/auth/Login';
+import Signup from '../components/auth/SignUp';
 
 class App extends React.Component {
 
@@ -64,6 +66,27 @@ class App extends React.Component {
               exact path ={"/"}
               render ={props => (
                 <Home {...props}
+                  loggedInStatus = {this.state.isLoggedin} 
+                />
+              )}
+            />
+
+            <Route 
+              exact path ={"/login"}
+              render ={props => (
+                <Login {...props}
+                  handleLogin = {this.handleLogin}
+                  loggedInStatus = {this.state.isLoggedin}
+                />
+              )}
+            />
+
+            <Route
+              exact path ={"/signup"}
+              render ={props => (
+                <Signup {...props}
+                  handleLogin = {this.handleLogin}
+                  loggedInStatus = {this.state.isLoggedin}
                 />
               )}
             />
