@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 class SignUp extends React.Component {
 
@@ -11,10 +12,8 @@ class SignUp extends React.Component {
       password: "",
       password_confirmation: "",
       registrationErrors: ""
-    }
+    };
 
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleChange = this.handleChange.bind(this);
   }
 
   handleChange(event) {
@@ -24,28 +23,49 @@ class SignUp extends React.Component {
   }
 
   handleSubmit(event) {
-    axios
-    .post("http://localhost:3000/registrations", 
-    {
-      user: {
-        email: this.state.email,
-        password: this.state.password,
-        password_confirmation: this.state.password_confirmation
-      }
-    },
-
-    { withCredentials: true }
-    ).then(response => {
-      if (response.data.status === 'created') {
-        this.props.handleSuccessfulAuth(response.data)
-      }
-    }).catch(error => {
-      console.log("registration error", error);
-    });
     event.preventDefault();
-  }
+    const { email, password, password_confirmation } = this.state;
+
+    let user = {
+      email: email,
+      password: password,
+      password_confirmation: password_confirmation
+    }
+
+    axios.post('http://localhost:3000/users', {user}, {withCredentials: true})
+      .then(response => {
+        if (response.data.status === 'created') {
+          this.props.handleLogin(response.data)
+          this.redirect()
+        } else {
+          this.setState({
+            errors: response.data.errors
+          })
+        }
+      })
+      .catch(error => console.log('api errors:', error))
+
+      redirect = () => {
+        this.props.history.push('/')
+      }
+
+      handleErrors = () => {
+        return (
+          <div>
+            <ul>
+              {this.state.errors.map((error) => {
+                return <li key={error}>{error}</li>
+              })}
+            </ul>
+          </div>
+        );
+      };
+  };
 
   render() {
+
+    const { emai, password, password_confirmation } = this.state;
+
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
