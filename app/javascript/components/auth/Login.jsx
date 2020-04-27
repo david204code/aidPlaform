@@ -10,9 +10,13 @@ class Login extends React.Component {
       email: "",
       password: "",
       loginErrors: ""
-    }
+    };
 
   }
+
+  componentWillMount() {
+    return this.props.loggedInStatus ? this.redirect() : null
+  };
 
   handleChange(event) {
     this.setState({
