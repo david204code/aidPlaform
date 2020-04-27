@@ -14,6 +14,7 @@ class SignUp extends React.Component {
       registrationErrors: ""
     };
 
+    this.handleChange = this.handleChange.bind(this);
   }
 
   handleChange(event) {
@@ -22,11 +23,12 @@ class SignUp extends React.Component {
     })
   }
 
-  handleSubmit(event) {
-    event.preventDefault();
-    const { email, password, password_confirmation } = this.state;
+  handleSubmit = (event) => {
+    event.preventDefault()
+    const { username, email, password, password_confirmation } = this.state;
 
     let user = {
+      username: username,
       email: email,
       password: password,
       password_confirmation: password_confirmation
@@ -44,56 +46,56 @@ class SignUp extends React.Component {
         }
       })
       .catch(error => console.log('api errors:', error))
+    };
 
-      redirect = () => {
-        this.props.history.push('/')
-      }
+    redirect = () => {
+      this.props.history.push('/map')
+    }
 
-      handleErrors = () => {
-        return (
-          <div>
-            <ul>
-              {this.state.errors.map((error) => {
-                return <li key={error}>{error}</li>
-              })}
-            </ul>
-          </div>
-        );
-      };
-  };
+    handleErrors = () => {
+      return (
+        <div>
+          <ul>
+            {this.state.errors.map((error) => {
+              return <li key={error}>{error}</li>
+            })}
+          </ul>
+        </div>
+      )
+    };
 
   render() {
 
-    const { emai, password, password_confirmation } = this.state;
+    const { email, password, password_confirmation } = this.state;
 
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
           <input 
-          type="email" 
-          name="email" 
-          placeholder="Your Email" 
-          value={this.state.email} 
-          onChange={this.handleChange} 
-          required 
+            type="email" 
+            name="email" 
+            placeholder="Your Email" 
+            value={this.state.email} 
+            onChange={this.handleChange} 
+            required 
           />
 
           <input 
-          type="password"
-          name="password"
-          placeholder="Your password"
-          value={this.state.password}
-          onChange={this.handleChange}
-          required
+            type="password"
+            name="password"
+            placeholder="Your password"
+            value={this.state.password}
+            onChange={this.handleChange}
+            required
           />
 
           <input
-          type="password"
-          name="password_confirmation"
-          placeholder="Confirm password"
-          value={this.state.password_confirmation}
-          onChange={this.handleChange}
-          required
+            type="password"
+            name="password_confirmation"
+            placeholder="Confirm password"
+            value={this.state.password_confirmation}
+            onChange={this.handleChange}
+            required
           />
 
           <button type="submit">Register</button>

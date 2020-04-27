@@ -19,10 +19,10 @@ class Home extends React.Component {
   };
 
   handleLogOutClick() {
-    axios
-    .delete("http://localhost:3000/logout", { withCredentials: true})
+    axios.delete("http://localhost:3000/logout", { withCredentials: true})
     .then(response => {
       this.props.handleLogOut();
+      props.history.push('/')
     })
     .catch(error => {
       console.log("logout error", error);
@@ -33,7 +33,7 @@ class Home extends React.Component {
     return (
     <div className = "container">
       <h1>Home</h1>
-      <h1>Status: {this.props.loggedInStatus}</h1>
+      <h1>Status: {this.props.isLoggedin}</h1>
       <button onClick={() => this.handleLogOutClick()}>Logout</button>
       <div className ="row">
         <div className ="col-md-5 text-center" style={{backgroundColor: "lightblue"}}>
@@ -64,7 +64,7 @@ class Home extends React.Component {
 
       <div className ="row mb-3">
         <div className ="col-md-6 offset-md-3">
-          <Login handleSuccessfulAuth ={this.handleSuccessfulAuth}/>
+          <Login />
         </div>
       </div>
 

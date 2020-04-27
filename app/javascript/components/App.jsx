@@ -25,7 +25,7 @@ class App extends React.Component {
   };
 
   loginStatus = () => {
-    axios.get('http://localhost:3001/logged_in',
+    axios.get('http://localhost:3000/logged_in',
     {withCredentials: true})
 
     .then(response => {
@@ -66,7 +66,8 @@ class App extends React.Component {
               exact path ={"/"}
               render ={props => (
                 <Home {...props}
-                  loggedInStatus = {this.state.isLoggedin} 
+                  loggedInStatus = {this.state.isLoggedin}
+                  handleLogout = {this.handleLogout} 
                 />
               )}
             />
