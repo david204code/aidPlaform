@@ -10,7 +10,7 @@ class Home extends React.Component {
     super(props);
 
     this.handleSuccessfulAuth = this.handleSuccessfulAuth.bind(this);
-    this.handleLogOutClick = this.handleLogOutClick.bind(this);
+    // this.handleLogOutClick = this.handleLogOutClick.bind(this);
   }
 
   handleSuccessfulAuth(data) {
@@ -18,25 +18,25 @@ class Home extends React.Component {
     this.props.history.push("/dashboard");
   };
 
-  handleLogOutClick() {
-    axios.delete("http://localhost:3000/logout", { withCredentials: true})
-    .then(response => {
-      this.props.handleLogOut();
-      this.props.history.push('/')
-    })
-    .catch(error => {
-      console.log("logout error", error);
-    });
-  };
+  // handleLogOutClick() {
+  //   axios.delete("http://localhost:3000/logout", { withCredentials: true})
+  //   .then(response => {
+  //     this.props.handleLogOut();
+  //     this.props.history.push('/')
+  //   })
+  //   .catch(error => {
+  //     console.log("logout error", error);
+  //   });
+  // };
 
   render() {
     return (
     <div className = "container">
-      {
+      {/* {
         this.props.loggedInStatus ? 
         <button onClick={() => this.handleLogOutClick()}>Logout</button> :
         null
-      }
+      } */}
 
       <div className ="row">
         <div className ="col-md-5 text-center" style={{backgroundColor: "lightblue"}}>

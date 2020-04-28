@@ -1,7 +1,25 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 class Navbar extends React.Component {
+
+  constructor(props) {
+    super(props);
+
+    this.handleLogOutClick = this.handleLogOutClick.bind(this);
+  }
+
+  handleLogOutClick() {
+    axios.delete("http://localhost:3000/logout", { withCredentials: true})
+    .then(response => {
+      this.props.handleLogOut();
+      this.props.history.push('/')
+    })
+    .catch(error => {
+      console.log("logout error", error);
+    });
+  };
 
   render() {
     return (
@@ -10,7 +28,11 @@ class Navbar extends React.Component {
         <h4 className ="text-center">Help those around you, your very own local
           neighbour aid platform for your neighbour!
         </h4>
-
+        {
+          this.props.loggedInStatus ? 
+          <button onClick={() => this.handleLogOutClick()}>Logout</button> :
+          null
+        }
         <nav className ="text-center">
           <Link 
             to =""

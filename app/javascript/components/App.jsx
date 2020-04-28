@@ -61,7 +61,14 @@ class App extends React.Component {
       <div>
         <BrowserRouter>
 
-          <Navbar />
+          <Route
+            render ={props => (
+              <Navbar {...props}
+                loggedInStatus = {this.state.isLoggedin}
+                handleLogOut = {this.handleLogOut} 
+            />
+            )}
+          />
 
           <Switch>
             <Route 
@@ -98,7 +105,9 @@ class App extends React.Component {
             <Route
               exact path ={"/dashboard"}
               render ={props => (
-                <Dashboard
+                <Dashboard {...props}
+                  handleLogin = {this.handleLogin}
+                  loggedInStatus = {this.state.isLoggedin}
                 />
               )}
             />
@@ -106,7 +115,9 @@ class App extends React.Component {
             <Route 
               exact path ={"/map"}
               render ={props => (
-                <Map
+                <Map {...props}
+                  handleLogin = {this.handleLogin}
+                  loggedInStatus = {this.state.isLoggedin}
                 />  
               )}
             />
@@ -114,7 +125,9 @@ class App extends React.Component {
             <Route
               exact path ={"/help"}
               render ={props => (
-                <Help
+                <Help {...props}
+                  handleLogin = {this.handleLogin}
+                  loggedInStatus = {this.state.isLoggedin}
                 />
               )}
             />
