@@ -18,6 +18,8 @@ class App extends React.Component {
       isLoggedin: false,
       user: {}
     };
+
+    this.handleLogOut = this.handleLogOut.bind(this);
   };
 
   componentDidMount() {
@@ -32,7 +34,7 @@ class App extends React.Component {
       if (response.data.logged_in) {
         this.handleLogin(response)
       } else {
-        this.handleLogout()
+        this.handleLogOut()
       }
     })
     .catch(error => console.log('api errors:', error))
@@ -46,7 +48,7 @@ class App extends React.Component {
     });
   };
 
-  handleLogout = () => {
+  handleLogOut = () => {
     this.setState({
       isLoggedin: false,
       user: {}
@@ -67,7 +69,8 @@ class App extends React.Component {
               render ={props => (
                 <Home {...props}
                   loggedInStatus = {this.state.isLoggedin}
-                  handleLogout = {this.handleLogout} 
+                  handleLogin = {this.handleLogin}
+                  handleLogOut = {this.handleLogOut} 
                 />
               )}
             />

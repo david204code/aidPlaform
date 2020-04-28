@@ -12,6 +12,8 @@ class Login extends React.Component {
       loginErrors: ""
     };
 
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentWillMount() {
@@ -36,8 +38,7 @@ class Login extends React.Component {
     axios.post('http://localhost:3000/login', {user}, {withCredentials: true})
       .then(response => {
         if (response.data.logged_in) {
-          this.props.handleLogin(response.data)
-          this.redirect()
+          this.props.handleSuccessfulAuth(response.data)
         } else {
           this.setState ({
             errors: response.data.errors
@@ -46,21 +47,19 @@ class Login extends React.Component {
       })
       .catch(error => console.log('api errors:', error))
 
-      redirect = () => {
-        this.props.history.push('/')
-      }
-      handleErrors = () => {
-        return (
-          <div>
-            <ul>
-              {this.state.errors.map(error => {
-                return <li key={error}>{error}</li>
-              })}
-            </ul>
-          </div>
-        )
-    };    
-  };
+    };
+
+        handleErrors = () => {
+          return (
+            <div>
+              <ul>
+                {this.state.errors.map(error => {
+                  return <li key={error}>{error}</li>
+                })}
+              </ul>
+            </div>
+          )
+      };    
 
 
 

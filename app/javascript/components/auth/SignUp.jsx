@@ -37,8 +37,7 @@ class SignUp extends React.Component {
     axios.post('http://localhost:3000/users', {user}, {withCredentials: true})
       .then(response => {
         if (response.data.status === 'created') {
-          this.props.handleLogin(response.data)
-          this.redirect()
+          this.props.handleSuccessfulAuth(response.data)
         } else {
           this.setState({
             errors: response.data.errors
@@ -47,10 +46,6 @@ class SignUp extends React.Component {
       })
       .catch(error => console.log('api errors:', error))
     };
-
-    redirect = () => {
-      this.props.history.push('/map')
-    }
 
     handleErrors = () => {
       return (
