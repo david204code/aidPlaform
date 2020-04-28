@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import axios from 'axios';
 import Navbar from '../components/pages/Navbar';
 import Home from '../components/pages/Home';
@@ -8,6 +8,7 @@ import Map from '../components/map/Map';
 import Help from './help/Help';
 import Login from '../components/auth/Login';
 import Signup from '../components/auth/SignUp';
+import Notice from '../components/pages/Notice';
 
 class App extends React.Component {
 
@@ -130,6 +131,11 @@ class App extends React.Component {
                   loggedInStatus = {this.state.isLoggedin}
                 />
               )}
+            />
+
+            <Route
+              exact path ={"/notice"}
+              component = { Notice }
             />
 
           </Switch>
