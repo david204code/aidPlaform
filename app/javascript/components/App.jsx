@@ -34,8 +34,16 @@ class App extends React.Component {
     .then(response => {
       if (response.data.logged_in) {
         this.handleLogin(response)
-      } else {
+        this.setState({
+          isLoggedin: true,
+          user: response.data.user
+        })
+      } else if (!response.data.logged_in) {
         this.handleLogOut()
+        this.setState({
+          isLoggedin: false,
+          user: {}
+        })
       }
     })
     .catch(error => console.log('api errors:', error))
@@ -58,6 +66,19 @@ class App extends React.Component {
   
 
   render() {
+
+    const PrivateRoute = ({ component: Component, ...rest}) => (
+      <Route {...rest} render={(props) => (
+        this.state.isLoggedin === true
+        ? <Component {...props}/>
+        : <Redirect to={{
+          pathname: '/notice',
+          state: { from: props.location }
+        }} />
+      )
+    }/>
+    )
+
     return (
       <div>
         <BrowserRouter>
@@ -65,7 +86,7 @@ class App extends React.Component {
           <Route
             render ={props => (
               <Navbar {...props}
-                loggedInStatus = {this.state.isLoggedin}
+                isLoggedin = {this.state.isLoggedin}
                 handleLogOut = {this.handleLogOut} 
             />
             )}
@@ -76,19 +97,19 @@ class App extends React.Component {
               exact path ={"/"}
               render ={props => (
                 <Home {...props}
-                  loggedInStatus = {this.state.isLoggedin}
+                  isLoggedin = {this.state.isLoggedin}
                   handleLogin = {this.handleLogin}
                   handleLogOut = {this.handleLogOut} 
                 />
               )}
             />
 
-            <Route 
+            {/* <Route 
               exact path ={"/login"}
               render ={props => (
                 <Login {...props}
                   handleLogin = {this.handleLogin}
-                  loggedInStatus = {this.state.isLoggedin}
+                  isLoggedin = {this.state.isLoggedin}
                 />
               )}
             />
@@ -98,39 +119,41 @@ class App extends React.Component {
               render ={props => (
                 <Signup {...props}
                   handleLogin = {this.handleLogin}
-                  loggedInStatus = {this.state.isLoggedin}
+                  isLoggedin = {this.state.isLoggedin}
                 />
               )}
-            />
+            /> */}
 
             <Route
               exact path ={"/dashboard"}
               render ={props => (
                 <Dashboard {...props}
                   handleLogin = {this.handleLogin}
-                  loggedInStatus = {this.state.isLoggedin}
+                  isLoggedin = {this.state.isLoggedin}
                 />
               )}
             />
 
-            <Route 
+            <PrivateRoute 
               exact path ={"/map"}
-              render ={props => (
-                <Map {...props}
-                  handleLogin = {this.handleLogin}
-                  loggedInStatus = {this.state.isLoggedin}
-                />  
-              )}
+              component = { Map }
+              // render ={props => (
+              //   <Map {...props}
+              //     handleLogin = {this.handleLogin}
+              //     isLoggedin = {this.state.isLoggedin}
+              //   />  
+              // )}
             />
 
-            <Route
+            <PrivateRoute
               exact path ={"/help"}
-              render ={props => (
-                <Help {...props}
-                  handleLogin = {this.handleLogin}
-                  loggedInStatus = {this.state.isLoggedin}
-                />
-              )}
+              component = { Help }
+              // render ={props => (
+              //     <Help {...props}
+              //       handleLogin = {this.handleLogin}
+              //       isLoggedin = {this.state.isLoggedin}
+              //     />
+              //   )}
             />
 
             <Route

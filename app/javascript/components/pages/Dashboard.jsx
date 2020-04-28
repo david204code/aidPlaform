@@ -13,7 +13,7 @@ class Dashboard extends React.Component {
     return (
       <div>
         <h1>Dashboard</h1>
-        <h1>Status: {this.props.loggedInStatus}</h1>
+        <h1>Status: {this.props.isLoggedin.toString()}</h1>
       </div>
     );
   };

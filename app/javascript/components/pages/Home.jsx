@@ -33,7 +33,7 @@ class Home extends React.Component {
     return (
     <div className = "container">
       {/* {
-        this.props.loggedInStatus ? 
+        this.props.isLoggedin ? 
         <button onClick={() => this.handleLogOutClick()}>Logout</button> :
         null
       } */}

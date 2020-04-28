@@ -29,7 +29,7 @@ class Navbar extends React.Component {
           neighbour aid platform for your neighbour!
         </h4>
         {
-          this.props.loggedInStatus ? 
+          this.props.isLoggedin ? 
           <button onClick={() => this.handleLogOutClick()}>Logout</button> :
           null
         }
