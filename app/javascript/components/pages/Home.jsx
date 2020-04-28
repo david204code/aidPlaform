@@ -32,7 +32,12 @@ class Home extends React.Component {
   render() {
     return (
     <div className = "container">
-      <button onClick={() => this.handleLogOutClick()}>Logout</button>
+      {
+        this.props.loggedInStatus ? 
+        <button onClick={() => this.handleLogOutClick()}>Logout</button> :
+        null
+      }
+
       <div className ="row">
         <div className ="col-md-5 text-center" style={{backgroundColor: "lightblue"}}>
           <p className ="pt-4">
