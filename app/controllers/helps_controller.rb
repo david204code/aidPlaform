@@ -5,8 +5,10 @@ class HelpsController < ApplicationController
   end
 
   def create
-    @help = Help.create!(help_params)
-    @help.user_id = current_user.id
+    # @help = Help.create!(help_params)
+    # @help.user_id = session[:user_id]
+    
+    @help = Help.new(help_params.merge(user_id: session[:user_id]))
 
     # @help = Help.new(title: params[:title],
     #                 description: params[:description],
@@ -14,7 +16,7 @@ class HelpsController < ApplicationController
     #                 location_long: params[:location_long],
     #                 location_lat: params[:location_lat],
     #                 status: params[:status],
-    #                 user_id: @current_user.id)
+    #                 user_id: session[:user_id])
 
     unless @help.save
       render json: @help.errors, status: :unprocessable_entity

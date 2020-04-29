@@ -129,7 +129,8 @@ class Map extends React.Component {
                   {...this.state.helps}
                   key={help.id}
                   data={this.state.helps} 
-                  onClick={this._onClickMarker} 
+                  onClick={this._onClickMarker}
+                  color={help.color} 
                 />
               ))
               }
