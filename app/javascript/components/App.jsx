@@ -9,6 +9,7 @@ import Help from './help/Help';
 import Login from '../components/auth/Login';
 import Signup from '../components/auth/SignUp';
 import Notice from '../components/pages/Notice';
+import Request from '../components/map/Request';
 
 class App extends React.Component {
 
@@ -143,6 +144,10 @@ class App extends React.Component {
               //     isLoggedin = {this.state.isLoggedin}
               //   />  
               // )}
+            />
+
+            <PrivateRoute
+              path="/help/:id" exact component ={Request}
             />
 
             <PrivateRoute
