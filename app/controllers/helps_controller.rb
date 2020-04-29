@@ -31,6 +31,18 @@ class HelpsController < ApplicationController
     end
   end
 
+  def index
+    @help = Help.all
+    # @help = Help.first
+    render json: { data: @help }
+  end
+
+  def show 
+    @help ||= Help.find(params[:id])
+    # render json: { data: @help }
+    render json: @help
+  end
+
   private
 
   def help_params
