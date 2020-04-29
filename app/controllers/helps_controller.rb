@@ -6,7 +6,7 @@ class HelpsController < ApplicationController
 
   def create
     @help = Help.create!(help_params)
-    # @help.user_id = current_user.id
+    @help.user_id = current_user.id
 
     # @help = Help.new(title: params[:title],
     #                 description: params[:description],
