@@ -27,6 +27,7 @@ export default class Pin extends PureComponent {
           viewBox="0 0 24 24"
           style={{
           cursor: 'pointer',
+          // fill: 'blue',
           fill: {color},
           stroke: 'none',
           transform: `translate(${-SIZE / 2}px,${-SIZE}px)`

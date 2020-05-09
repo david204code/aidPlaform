@@ -36,6 +36,7 @@ class HelpsController < ApplicationController
   def index
     @help = Help.all
     # @help = Help.first
+    # help 
     render json: { data: @help }
   end
 
