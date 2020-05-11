@@ -19,3 +19,7 @@ require("channels")
 
 import 'bootstrap'
 import "../stylesheets/application" 
+
+$(document).on('turbolinks:load', function () {
+  console.log("We made it!");
+})
