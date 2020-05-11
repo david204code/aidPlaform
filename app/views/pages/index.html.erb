@@ -1,0 +1,13 @@
+<h1>Hello from index.html.erb</h1>
+
+<div id = "msg">
+
+</div>
+
+<%= form_for @message, remote: true do |f| %>
+
+  <%= f.text_field :title %>
+  <%= f.text_field :content %>
+  <%= f.submit %>
+
+<% end %> 

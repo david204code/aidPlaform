@@ -12,5 +12,7 @@ consumer.subscriptions.create("MessageChannel", {
 
   received(data) {
     // Called when there's incoming data on the websocket for this channel
+    $('#msg').append('<div class="message">'+ " " + data.content + '</div>')
+    console.log(data)
   }
 });
