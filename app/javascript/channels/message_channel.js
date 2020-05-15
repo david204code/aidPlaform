@@ -2,7 +2,6 @@ import consumer from "./consumer"
 
 consumer.subscriptions.create("MessageChannel", {
   connected() {
-    console.log("Channel connected")
     // Called when the subscription is ready for use on the server
   },
 
@@ -12,7 +11,15 @@ consumer.subscriptions.create("MessageChannel", {
 
   received(data) {
     // Called when there's incoming data on the websocket for this channel
-    $('#msg').append('<div class="message">'+ " " + data.content + '</div>')
-    console.log(data)
+
+    
+    var node = document.createElement("P");
+
+    var textnode = document.createTextNode(data.content.title);
+
+    node.appendChild(textnode);
+
+    document.getElementById("new_message").appendChild(node);
+    // document.getElementById('message.id').value = ''
   }
 });

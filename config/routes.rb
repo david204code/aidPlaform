@@ -12,9 +12,9 @@ Rails.application.routes.draw do
   get 'pages/home'
   get 'pages/dashboard'
   get 'pages/index'
-  root 'pages#index'
+  root 'messages#index'
 
-  resources :messages, only: [:new, :create]
+  resources :messages
 
   match '*pages', to: 'pages#home', via: :all
 end

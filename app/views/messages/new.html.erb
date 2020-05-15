@@ -1,0 +1,10 @@
+<h1>New Message</h1>
+<% @messages.each do |message| %>
+  <p id="<%=message.id%>"><%= message.title %></p>
+<% end %>
+
+<div id="new_message"%></div>
+
+<%= render 'form', message: @message %>
+
+<%= link_to 'Back', messages_path %>
