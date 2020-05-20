@@ -51,6 +51,7 @@ class Map extends React.Component {
             request_type: data.request_type,
             location_long: data.location_long,
             location_lat: data.location_lat,
+            color: data.color,
             status: data.status
           }
         )
@@ -130,7 +131,7 @@ class Map extends React.Component {
                   key={help.id}
                   data={this.state.helps} 
                   onClick={this._onClickMarker}
-                  color={help.color} 
+                   
                 />
               ))
               }

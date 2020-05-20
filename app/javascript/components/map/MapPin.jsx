@@ -14,7 +14,7 @@ const SIZE = 20;
 
 export default class Pin extends PureComponent {
   render() {
-    const {data, onClick, color} = this.props;
+    const {data, onClick} = this.props;
 
     return data.map((city, index) => (
       <Marker 
@@ -28,7 +28,7 @@ export default class Pin extends PureComponent {
           style={{
           cursor: 'pointer',
           // fill: 'blue',
-          fill: {color},
+          fill: `${city.color}`,
           stroke: 'none',
           transform: `translate(${-SIZE / 2}px,${-SIZE}px)`
           }}

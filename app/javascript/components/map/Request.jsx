@@ -65,7 +65,7 @@ class Request extends React.Component {
               {help.description}  
             </p>
           <h2>Type of Request: {help.request_type}</h2>
-          <p>Status of the request: This request has {help.status} of responds</p>
+          <p>Status of the request: This request has {help.status}(number) of responds</p>
           <p>This request is {help.fulfilled} currently</p>
         </div>
         
