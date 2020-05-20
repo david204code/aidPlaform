@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   resources :helps
   get 'helps', to: 'helps#index'
 
+  resources :accepted_helps
+
   root 'pages#home'
   get 'pages/home'
   get 'pages/dashboard'
