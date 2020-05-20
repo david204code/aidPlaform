@@ -16,11 +16,11 @@ export default class Pin extends PureComponent {
   render() {
     const {data, onClick} = this.props;
 
-    return data.map((city, index) => (
+    return data.map((help, index) => (
       <Marker 
         key={`marker-${index}`}
-        longitude={parseFloat(city.location_long)}
-        latitude={parseFloat(city.location_lat)}
+        longitude={parseFloat(help.location_long)}
+        latitude={parseFloat(help.location_lat)}
       >
         <svg
           height={SIZE}
@@ -28,11 +28,11 @@ export default class Pin extends PureComponent {
           style={{
           cursor: 'pointer',
           // fill: 'blue',
-          fill: `${city.color}`,
+          fill: `${help.color}`,
           stroke: 'none',
           transform: `translate(${-SIZE / 2}px,${-SIZE}px)`
           }}
-          onClick={() => onClick(city)}
+          onClick={() => onClick(help)}
         >
           <path d={ICON} />
         </svg>
