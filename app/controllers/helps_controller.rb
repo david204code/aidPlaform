@@ -9,6 +9,12 @@ class HelpsController < ApplicationController
     # @help.user_id = session[:user_id]
     
     @help = Help.new(help_params.merge(user_id: session[:user_id]))
+    
+    if @help.request_type == 'material-need'
+      @help.color = "red"
+    else
+      @help.color = "blue"
+    end
 
     # @help = Help.new(title: params[:title],
     #                 description: params[:description],
