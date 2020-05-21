@@ -18,7 +18,7 @@ class Help extends React.Component {
       request_type: "",
       location_long: "",
       location_lat: "",
-      status: "",
+      // status: "",
       volunteeringErrors: "",
 
       viewport: {
@@ -75,7 +75,7 @@ class Help extends React.Component {
           request_type: this.state.request_type,
           location_long: this.state.location_long,
           location_lat: this.state.location_lat,
-          status: this.state.status
+          // status: this.state.status
         }
       },
 
