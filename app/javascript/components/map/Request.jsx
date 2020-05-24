@@ -67,6 +67,25 @@ class Request extends React.Component {
           <h2>Type of Request: {help.request_type}</h2>
           <p>Status of the request: This request is {help.status}</p>
         </div>
+
+        <div className ="container pb-5 text-center">
+            <p className ="text-center pt-3">
+              Accept this request or send a message to find out more
+            </p>
+            <div className ="row">
+              <div className ="col-md-4 offset-md-2">
+                <button>
+                  Accept this request
+                </button>
+              </div>
+              <div className ="col-md-4">
+                <button>
+                  Send a message
+                </button>
+              </div>
+            </div>
+        </div>
+
         
       </div>
     )

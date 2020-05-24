@@ -146,7 +146,8 @@ class App extends React.Component {
               // )}
             />
 
-            <PrivateRoute
+            {/* <PrivateRoute */}
+            <Route
               path="/help/:id" exact component ={Request}
             />
 
