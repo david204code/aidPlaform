@@ -44,8 +44,9 @@ class SignUp extends React.Component {
           })
         }
       })
-      .catch(error => console.log('api errors:', error))
-    };
+      .catch(error => console.log('api errors:', error)
+    )
+  };
 
     handleErrors = () => {
       return (

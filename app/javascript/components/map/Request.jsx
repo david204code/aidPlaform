@@ -6,9 +6,12 @@ class Request extends React.Component {
   
   constructor(props) {
     super(props);
+    
     this.state = {
       help: []
-    }
+    };
+
+    this.acceptRequest = this.acceptRequest.bind(this);
   }
 
   componentDidMount() {
@@ -25,6 +28,25 @@ class Request extends React.Component {
     })
     .catch(error => console.log(error))
   }
+
+  acceptRequest = (event) => {
+    event.preventDefault()
+
+    axios.post('http://localhost:3000/accepted_helps', {withCredentials: true})
+      .then(response => {
+        if (response.data.logged_in) {
+          this.props.handleSuccessfulAuth(response.data)
+        } else {
+          this.setState ({
+            errors: response.data.errors
+          })
+        }
+      })
+      .catch(error => console.log('api errors:', error)
+    )
+    alert("Congrgulation on accepting this request")
+    this.props.history.push("/map");
+  };
 
   render() {
     const { help } = this.state;
@@ -68,22 +90,25 @@ class Request extends React.Component {
           <p>Status of the request: This request is {help.status}</p>
         </div>
 
+
         <div className ="container pb-5 text-center">
-            <p className ="text-center pt-3">
-              Accept this request or send a message to find out more
-            </p>
-            <div className ="row">
-              <div className ="col-md-4 offset-md-2">
-                <button>
+          <p className ="text-center pt-3">
+            Accept this request or send a message to find out more
+          </p>
+          <div className ="row">
+            <div className ="col-md-4 offset-md-2">
+              <form onSubmit={this.acceptRequest}>
+                <button type ="submit">
                   Accept this request
                 </button>
-              </div>
-              <div className ="col-md-4">
-                <button>
-                  Send a message
-                </button>
-              </div>
+              </form>
             </div>
+            <div className ="col-md-4">
+              <button>
+                Send a message
+              </button>
+            </div>
+          </div>
         </div>
 
         

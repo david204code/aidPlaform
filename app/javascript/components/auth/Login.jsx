@@ -45,9 +45,9 @@ class Login extends React.Component {
           })
         }
       })
-      .catch(error => console.log('api errors:', error))
-
-    };
+      .catch(error => console.log('api errors:', error)
+    )
+  };
 
         handleErrors = () => {
           return (
@@ -81,7 +81,7 @@ class Login extends React.Component {
                 value={this.state.email}
                 onChange={this.handleChange}
                 required
-                />
+              />
             </div>
             <div className ="form-group">
               <label>Password</label>
@@ -100,7 +100,7 @@ class Login extends React.Component {
                 Login
                 </button>
             </div>
-          </form>
+        </form>
           
           <div>
             {
