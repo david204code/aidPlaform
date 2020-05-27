@@ -10,6 +10,7 @@ import Login from '../components/auth/Login';
 import Signup from '../components/auth/SignUp';
 import Notice from '../components/pages/Notice';
 import Request from '../components/map/Request';
+import Messages from '../components/message/Messages';
 
 class App extends React.Component {
 
@@ -165,6 +166,11 @@ class App extends React.Component {
             <Route
               exact path ={"/notice"}
               component = { Notice }
+            />
+
+            <Route
+              exact path ={"/message"}
+              component = { Messages }
             />
 
           </Switch>

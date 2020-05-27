@@ -104,9 +104,23 @@ class Request extends React.Component {
               </form>
             </div>
             <div className ="col-md-4">
-              <button>
-                Send a message
-              </button>
+              {/* <a
+                // target ="_blank"
+                href ="http://localhost:3000/messages"
+              >
+                <button>
+                  Send a message
+                </button>
+              </a> */}
+              <Link
+                to ="/messages"
+                className =""
+                role ="button"
+              >
+                <button>
+                  Send a message
+                </button>
+              </Link>
             </div>
           </div>
         </div>
