@@ -6,7 +6,6 @@ class AcceptedHelpsController < ApplicationController
 
   def create
     @accepted_help = AcceptedHelp.new(accepted_params.merge(user_id: session[:user_id]))
-    # @accepted_help = AcceptedHelp.new(accepted_params.merge(user_id: session[:user_id], help_id: help[:help_id]))
 
     unless @accepted_help.save
       render json: @accepted_help.errors, status: :unprocessable_entity
@@ -30,7 +29,9 @@ class AcceptedHelpsController < ApplicationController
   private 
 
   def accepted_params
-    params.fetch(:accepted_help, {}).permit(:completed)
+    params.fetch(:accepted_help, {}).permit(
+      :help_id
+    )
   end
 
 end

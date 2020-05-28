@@ -31,8 +31,10 @@ class Request extends React.Component {
 
   acceptRequest = (event) => {
     event.preventDefault()
+    const { help } = this.state;
+    console.log(help.id);
 
-    axios.post('http://localhost:3000/accepted_helps', {withCredentials: true})
+    axios.post('http://localhost:3000/accepted_helps', {withCredentials: true, help_id: help.id})
       .then(response => {
         if (response.data.logged_in) {
           this.props.handleSuccessfulAuth(response.data)
@@ -104,15 +106,15 @@ class Request extends React.Component {
               </form>
             </div>
             <div className ="col-md-4">
-              {/* <a
+              <a
                 // target ="_blank"
                 href ="http://localhost:3000/messages"
               >
                 <button>
                   Send a message
                 </button>
-              </a> */}
-              <Link
+              </a>
+              {/* <Link
                 to ="/messages"
                 className =""
                 role ="button"
@@ -120,7 +122,7 @@ class Request extends React.Component {
                 <button>
                   Send a message
                 </button>
-              </Link>
+              </Link> */}
             </div>
           </div>
         </div>
