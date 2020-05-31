@@ -61,6 +61,14 @@ class Navbar extends React.Component {
               Dashboard
             </button>
           </Link>
+
+          <Link
+            to ="/messages"
+          >
+            <button className ="">
+              Messages
+            </button>
+          </Link>
         </nav>
       </div>
     );

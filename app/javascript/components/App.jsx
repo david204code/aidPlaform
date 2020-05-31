@@ -169,7 +169,7 @@ class App extends React.Component {
             />
 
             <Route
-              exact path ={"/message"}
+              exact path ={"/messages"}
               component = { Messages }
             />
 

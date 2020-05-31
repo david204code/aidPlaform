@@ -16,7 +16,8 @@ Rails.application.routes.draw do
   get 'pages/index'
   # root 'messages#index'
 
-  resources :messages
+  get 'messages1', to: 'messages#index'
+  resources :messages, except: [:index]
 
   match '*pages', to: 'pages#home', via: :all
 end

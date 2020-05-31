@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
-class Message extends React.Component {
+class Messages extends React.Component {
   constructor(props) {
     super(props);
 
@@ -20,4 +20,4 @@ class Message extends React.Component {
 
 };
 
-export default Message;
+export default Messages;
