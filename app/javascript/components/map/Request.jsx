@@ -47,7 +47,7 @@ class Request extends React.Component {
       .catch(error => console.log('api errors:', error)
     )
     alert("Congrgulation on accepting this request")
-    this.props.history.push("/map");
+    this.props.history.push("/AcceptedHelp");
   };
 
   render() {
@@ -95,35 +95,35 @@ class Request extends React.Component {
 
         <div className ="container pb-5 text-center">
           <p className ="text-center pt-3">
-            Accept this request or send a message to find out more
+            Able to assist? Click on the button below!
           </p>
           <div className ="row">
-            <div className ="col-md-4 offset-md-2">
+            <div className ="col-md-4 offset-md-4">
               <form onSubmit={this.acceptRequest}>
                 <button type ="submit">
                   Accept this request
                 </button>
               </form>
             </div>
-            <div className ="col-md-4">
+            {/* <div className ="col-md-4">
               <a
                 // target ="_blank"
-                href ="http://localhost:3000/messages"
+                href ="http://localhost:3000/message"
               >
                 <button>
                   Send a message
                 </button>
               </a>
-              {/* <Link
-                to ="/messages"
+              <Link
+                to ="/message"
                 className =""
                 role ="button"
               >
                 <button>
                   Send a message
                 </button>
-              </Link> */}
-            </div>
+              </Link>
+            </div> */}
           </div>
         </div>
 

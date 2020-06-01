@@ -21,6 +21,11 @@ class AcceptedHelpsController < ApplicationController
     end
   end
 
+  def index
+    @accepted_help = AcceptedHelp.all
+    render json: { data: @accepted_help }
+  end
+
   def show
     @accepted_help ||= AcceptedHelp.find(params[:id])
     render json: @accepted_help

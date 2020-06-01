@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
-class Messages extends React.Component {
+class AcceptedHelp extends React.Component {
   constructor(props) {
     super(props);
 
@@ -12,7 +12,7 @@ class Messages extends React.Component {
     return (
       <div>
         <div>
-          <h1>Hello from message components</h1>
+          <h1>Hello from AcceptedHelp</h1>
         </div>
       </div>
     )
@@ -20,4 +20,4 @@ class Messages extends React.Component {
 
 };
 
-export default Messages;
+export default AcceptedHelp;

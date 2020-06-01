@@ -62,13 +62,6 @@ class Navbar extends React.Component {
             </button>
           </Link>
 
-          <Link
-            to ="/messages"
-          >
-            <button className ="">
-              Messages
-            </button>
-          </Link>
         </nav>
       </div>
     );

@@ -12,7 +12,7 @@ class Requests extends PureComponent {
           <h3>{info.title}</h3>
           <p>{info.description}</p>
           <p>{info.request_type}</p>
-          <Link to={`/help/${info.id}`} className="">
+          <Link to={`/request/${info.id}`} className="">
             View request
           </Link>
         </div>

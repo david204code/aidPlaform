@@ -10,7 +10,8 @@ import Login from '../components/auth/Login';
 import Signup from '../components/auth/SignUp';
 import Notice from '../components/pages/Notice';
 import Request from '../components/map/Request';
-import Messages from '../components/message/Messages';
+import AcceptedHelp from './map/AcceptedHelp';
+
 
 class App extends React.Component {
 
@@ -149,7 +150,11 @@ class App extends React.Component {
 
             {/* <PrivateRoute */}
             <Route
-              path="/help/:id" exact component ={Request}
+              path="/request/:id" exact component ={Request}
+            />
+
+            <Route
+              path ="/acceptedhelp" exact component = {AcceptedHelp}
             />
 
             <PrivateRoute
@@ -166,11 +171,6 @@ class App extends React.Component {
             <Route
               exact path ={"/notice"}
               component = { Notice }
-            />
-
-            <Route
-              exact path ={"/messages"}
-              component = { Messages }
             />
 
           </Switch>

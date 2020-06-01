@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get 'helps', to: 'helps#index'
 
   resources :accepted_helps
+  get 'acceptedhelps', to: 'accepted_helps#index'
 
   root 'pages#home'
   get 'pages/home'
@@ -16,7 +17,7 @@ Rails.application.routes.draw do
   get 'pages/index'
   # root 'messages#index'
 
-  get 'messages1', to: 'messages#index'
+  get 'messages', to: 'messages#index'
   resources :messages, except: [:index]
 
   match '*pages', to: 'pages#home', via: :all

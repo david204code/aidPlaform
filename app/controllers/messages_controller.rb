@@ -1,23 +1,13 @@
 class MessagesController < ApplicationController
   before_action :set_msg, only: [:show, :edit, :update, :destroy]
 
-  def index
-    @messages = Message.all
-  end
-
-  def show
-  end
-
   def new
-    @message = Message.new
-    @messages = Message.all
+    @message = Message.new(user:current_user)
+    @message = Message.all
   end
-
-  def edit
-  end
-
+  
   def create
-    @message = Message.new(msg_params)
+    @message = Message.new(msg_params.merge(user_id: session[:user_id]))
 
     respond_to do |format|
       if @message.save
@@ -30,6 +20,19 @@ class MessagesController < ApplicationController
         format.json { render json: @message.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def index
+    @messages = Message.all
+    # render json: { data: @messages}
+  end
+
+  def show
+    @message ||= Message.find(params[:id])
+    render json: @message 
+  end
+
+  def edit
   end
 
   def update
@@ -62,7 +65,7 @@ class MessagesController < ApplicationController
   end
 
   def msg_params
-    params.require(:message).permit(:title, :content)
+    params.require(:message, {}).permit(:title, :content)
   end
 
 end
