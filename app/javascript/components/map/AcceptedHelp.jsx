@@ -13,6 +13,8 @@ class AcceptedHelp extends React.Component {
       <div>
         <div>
           <h1>Hello from AcceptedHelp</h1>
+          <p>You have accepted this request</p>
+          <p>Please contact the member of your community by messaging them below:</p>
         </div>
       </div>
     )
