@@ -11,6 +11,7 @@ import Signup from '../components/auth/SignUp';
 import Notice from '../components/pages/Notice';
 import Request from '../components/map/Request';
 import AcceptedHelp from './map/AcceptedHelp';
+import Message from './map/Message';
 
 
 class App extends React.Component {
@@ -166,6 +167,11 @@ class App extends React.Component {
               //       isLoggedin = {this.state.isLoggedin}
               //     />
               //   )}
+            />
+
+            <Route 
+              exact path ={"/message"}
+              component = { Message }
             />
 
             <Route
