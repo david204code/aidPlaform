@@ -6,12 +6,17 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import App from '../components/App';
+import { ActionCableProvider } from 'react-actioncable-provider';
+import { API_WS_ROOT } from '../constants/index';
 
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
-    <Router>
-      <Route path ="/" component ={App} />
-    </Router>,
+    // <Router>
+    //   <Route path ="/" component ={App} />
+    // </Router>,
+    <ActionCableProvider url={API_WS_ROOT}>
+      <App />
+    </ActionCableProvider>,
     document.body.appendChild(document.createElement('div')),
   )
 })
