@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_06_201705) do
+ActiveRecord::Schema.define(version: 2020_06_06_202235) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,7 +53,9 @@ ActiveRecord::Schema.define(version: 2020_06_06_201705) do
     t.bigint "user_id"
     t.bigint "help_id"
     t.bigint "accepted_help_id"
+    t.bigint "conversation_id"
     t.index ["accepted_help_id"], name: "index_messages_on_accepted_help_id"
+    t.index ["conversation_id"], name: "index_messages_on_conversation_id"
     t.index ["help_id"], name: "index_messages_on_help_id"
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
@@ -69,6 +71,7 @@ ActiveRecord::Schema.define(version: 2020_06_06_201705) do
   add_foreign_key "accepted_helps", "users"
   add_foreign_key "helps", "users"
   add_foreign_key "messages", "accepted_helps"
+  add_foreign_key "messages", "conversations"
   add_foreign_key "messages", "helps"
   add_foreign_key "messages", "users"
 end
