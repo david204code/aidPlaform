@@ -17,8 +17,10 @@ Rails.application.routes.draw do
   get 'pages/index'
   # root 'messages#index'
 
-  get 'messages', to: 'messages#index'
-  resources :messages, except: [:index]
+  # get 'messages', to: 'messages#index'
+  # resources :messages, except: [:index]
+  resources :messages, only: [:create]
+  mount ActionCable.server => '/cable'
 
   match '*pages', to: 'pages#home', via: :all
 end
