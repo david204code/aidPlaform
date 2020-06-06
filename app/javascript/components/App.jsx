@@ -12,6 +12,7 @@ import Notice from '../components/pages/Notice';
 import Request from '../components/map/Request';
 import AcceptedHelp from './map/AcceptedHelp';
 import Message from './map/Message';
+import ConversationList from './ConversationList';
 
 
 class App extends React.Component {
@@ -172,6 +173,11 @@ class App extends React.Component {
             <Route 
               exact path ={"/message"}
               component = { Message }
+            />
+
+            <Route 
+              exact path ={"/conversationlist"}
+              component = { ConversationList }
             />
 
             <Route
