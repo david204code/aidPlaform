@@ -21,12 +21,18 @@ class App extends React.Component {
     super();
 
     this.state = {
-      isLoggedin: false,
+      isLoggedin: '',
       user: {}
     };
 
     this.handleLogOut = this.handleLogOut.bind(this);
   };
+
+  // componentDidMount() {
+  //   setTimeout(function() {
+  //     this.loginStatus()   
+  //   }.bind(this), 2000)
+  // };
 
   componentDidMount() {
     this.loginStatus()
@@ -74,7 +80,8 @@ class App extends React.Component {
 
     const PrivateRoute = ({ component: Component, ...rest}) => (
       <Route {...rest} render={(props) => (
-        this.state.isLoggedin === true
+        this.state.isLoggedin === true,
+        setTimeout(1000)
         ? <Component {...props}/>
         : <Redirect to={{
           pathname: '/notice',
