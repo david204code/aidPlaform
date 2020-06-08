@@ -20,8 +20,8 @@ class NewMessageForm extends React.Component {
   handleSubmit = e => {
     // const text = this.state;
     // const conversation_id = this.props;
-    // const csrfToken = document.querySelector('[name=csrf-token]').content
-    // axios.defaults.headers.common['X-CSRF-TOKEN'] = csrfToken
+    const csrfToken = document.querySelector('[name=csrf-token]').content
+    axios.defaults.headers.common['X-CSRF-TOKEN'] = csrfToken
     
     axios
     .post("http://localhost:3000/messages",

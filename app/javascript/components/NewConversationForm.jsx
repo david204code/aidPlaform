@@ -17,9 +17,9 @@ class NewConversationForm extends React.Component {
 
   //fetch needed to be updated perhaps but need explanation with the e and arrow funciton
   handleSubmit = e => {
-    // const title = this.state;
-    // const csrfToken = document.querySelector('[name=csrf-token]').content
-    // axios.defaults.headers.common['X-CSRF-TOKEN'] = csrfToken
+    const title = this.state;
+    const csrfToken = document.querySelector('[name=csrf-token]').content
+    axios.defaults.headers.common['X-CSRF-TOKEN'] = csrfToken
 
     axios
     .post("http://localhost:3000/conversations",
