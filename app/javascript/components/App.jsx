@@ -80,8 +80,8 @@ class App extends React.Component {
 
     const PrivateRoute = ({ component: Component, ...rest}) => (
       <Route {...rest} render={(props) => (
-        this.state.isLoggedin === true,
-        setTimeout(1000)
+        this.state.isLoggedin === true
+        // setTimeout(1000)
         ? <Component {...props}/>
         : <Redirect to={{
           pathname: '/notice',
