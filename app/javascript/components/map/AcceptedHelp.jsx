@@ -6,7 +6,29 @@ class AcceptedHelp extends React.Component {
   constructor(props) {
     super(props);
 
+    this.state ={
+      acceptedHelp: []
+    };
+
   };
+
+  componentDidMount() {
+    const {
+      match: {
+        params: { id }
+      }
+    } = this.props;
+
+    axios.get(`/acceptedhelps/${id}`)
+    .then(response => {
+      console.log(response => {
+        this.setState({acceptedHelp: response.data})
+      })
+      .catch(error =>  console.log(error))
+    }
+    
+    )
+  }
 
   render() {
     return (

@@ -21,10 +21,11 @@ class App extends React.Component {
     super();
 
     this.state = {
-      isLoggedin: '',
+      isLoggedin: false,
       user: {}
     };
 
+    this.handleLogin = this.handleLogin.bind(this);
     this.handleLogOut = this.handleLogOut.bind(this);
   };
 
@@ -37,6 +38,14 @@ class App extends React.Component {
   componentDidMount() {
     this.loginStatus()
   };
+
+  // componentOnMount() {
+  //   this.loginStatus()
+  // };
+
+  // componentWillUpdate() {
+  //   this.loginStatus()
+  // };
 
   loginStatus = () => {
     axios.get('http://localhost:3000/logged_in',
@@ -60,6 +69,10 @@ class App extends React.Component {
     .catch(error => console.log('api errors:', error))
   };
 
+  componentWillUpdate(nextProps, nextState) {
+    localStorage.setItem('user', JSON.stringify(nextState.user));
+  }
+
 
   handleLogin = (data) => {
     this.setState({
@@ -77,11 +90,13 @@ class App extends React.Component {
   
 
   render() {
-
     const PrivateRoute = ({ component: Component, ...rest}) => (
       <Route {...rest} render={(props) => (
+        console.log(this.state.user.email),
+        console.log(localStorage.user),
+        console.log(localStorage.user[21]+localStorage.user[22]),
+        // this.state.user.email === localStorage.user
         this.state.isLoggedin === true
-        // setTimeout(1000)
         ? <Component {...props}/>
         : <Redirect to={{
           pathname: '/notice',
