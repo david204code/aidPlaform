@@ -38,7 +38,7 @@ class Map extends React.Component {
     console.log("Hi", e.lngLat[0], e.lngLat[1]);
   }
 
-  componentDidMount() {
+  componentWillMount() {
     axios.get('/helps.json')
     .then(data => {
       let info = []

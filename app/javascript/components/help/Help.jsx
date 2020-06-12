@@ -89,7 +89,8 @@ class Help extends React.Component {
     });
     event.preventDefault();
     // alert("Congrgulation on volunteering")
-    this.props.history.push("/map"); 
+    this.props.history.push("/map");
+    // window.location.reload(); 
   }
 
   handleChange(event) {
