@@ -22,6 +22,7 @@ class App extends React.Component {
 
     this.state = {
       isLoggedin: false,
+      userEmail: localStorage.userEmail,
       user: {}
     };
 
@@ -56,12 +57,14 @@ class App extends React.Component {
         this.handleLogin(response)
         this.setState({
           isLoggedin: true,
+          userEmail: response.data.user.email,
           user: response.data.user
         })
       } else if (!response.data.logged_in) {
         this.handleLogOut()
         this.setState({
           isLoggedin: false,
+          userEmail: '',
           user: {}
         })
       }
@@ -71,20 +74,23 @@ class App extends React.Component {
 
   componentWillUpdate(nextProps, nextState) {
     localStorage.setItem('user', JSON.stringify(nextState.user));
+    localStorage.setItem('userEmail', nextState.userEmail);
   }
 
 
   handleLogin = (data) => {
     this.setState({
       isLoggedin: true,
-      user: data.user
+      user: data.user,
+      userEmail: data.userEmail,
     });
   };
 
   handleLogOut = () => {
     this.setState({
       isLoggedin: false,
-      user: {}
+      user: {},
+      userEmail: '',
     });
   };
   
@@ -92,11 +98,11 @@ class App extends React.Component {
   render() {
     const PrivateRoute = ({ component: Component, ...rest}) => (
       <Route {...rest} render={(props) => (
-        console.log(this.state.user.email),
-        console.log(localStorage.user),
-        console.log(localStorage.user[21]+localStorage.user[22]),
-        // this.state.user.email === localStorage.user
-        this.state.isLoggedin === true
+        // console.log(this.state.user.email),
+        // console.log(localStorage.user),
+        // console.log(localStorage.user[21]+localStorage.user[22]),
+        !!localStorage.userEmail && localStorage.userEmail != undefined
+        // this.state.isLoggedin === true
         ? <Component {...props}/>
         : <Redirect to={{
           pathname: '/notice',
