@@ -10,6 +10,8 @@ const TOKEN = 'pk.eyJ1IjoiZGF2aWQyMDRjb2RlMSIsImEiOiJjazc2YjdobGUwOTI0M2VvamwwZX
 
 class Map extends React.Component {
 
+  _isMounted = false;
+
   constructor(props) {
     super(props);
 
@@ -39,6 +41,7 @@ class Map extends React.Component {
   }
 
   componentWillMount() {
+    this._isMounted = true;
     axios.get('/helps.json')
     .then(data => {
       let info = []
@@ -55,13 +58,18 @@ class Map extends React.Component {
             status: data.status
           }
         )
-
-        this.setState({ helps: info })
+        if (this._isMounted) {
+          this.setState({ helps: info })
+        }
       })
     })
     .catch(data => {
 
     })
+  }
+
+  componentWillUnmount() {
+    this._isMounted = false;
   }
 
   _onClickMarker = helps => {
