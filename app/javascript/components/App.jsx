@@ -57,8 +57,8 @@ class App extends React.Component {
         this.handleLogin(response)
         this.setState({
           isLoggedin: true,
-          userEmail: response.data.user.email,
-          user: response.data.user
+          user: response.data.user,
+          userEmail: response.data.user.email
         })
       } else if (!response.data.logged_in) {
         this.handleLogOut()
@@ -82,7 +82,7 @@ class App extends React.Component {
     this.setState({
       isLoggedin: true,
       user: data.user,
-      userEmail: data.userEmail,
+      userEmail: data.user.email,
     });
   };
 
@@ -100,6 +100,7 @@ class App extends React.Component {
       <Route {...rest} render={(props) => (
         // console.log(this.state.user.email),
         // console.log(localStorage.user),
+        // console.log(localStorage.userEmail),
         // console.log(localStorage.user[21]+localStorage.user[22]),
         !!localStorage.userEmail && localStorage.userEmail != undefined
         // this.state.isLoggedin === true
