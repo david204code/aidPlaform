@@ -23,7 +23,10 @@ class AcceptedHelpsController < ApplicationController
 
   def index
     @accepted_help = AcceptedHelp.all
+    @help = Help.all
     render json: { data: @accepted_help }
+    # render json: { data: @help + @accepted_help }
+    # render json: { data: @accepted_help + @help }
   end
 
   def show

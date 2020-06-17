@@ -5,11 +5,15 @@ Rails.application.routes.draw do
   get '/logged_in', to: 'sessions#is_logged_in?'
   resources :users, only: [:create, :show, :index]
 
-  resources :helps
-  get 'helps', to: 'helps#index'
+  resources :helps do
+    resources :accepted_helps
+  end
 
-  resources :accepted_helps
-  get 'acceptedhelps', to: 'accepted_helps#index'
+  # resources :helps
+  # get 'helps', to: 'helps#index'
+
+  # resources :accepted_helps
+  # get 'acceptedhelps', to: 'accepted_helps#index'
 
   root 'pages#home'
   get 'pages/home'

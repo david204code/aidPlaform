@@ -34,7 +34,7 @@ class Request extends React.Component {
     const { help } = this.state;
     console.log(help.id);
 
-    axios.post('http://localhost:3000/accepted_helps', {withCredentials: true, help_id: help.id})
+    axios.post(`http://localhost:3000/helps/${help.id}/accepted_helps`, {withCredentials: true, help_id: help.id})
       .then(response => {
         if (response.data.logged_in) {
           this.props.handleSuccessfulAuth(response.data)
