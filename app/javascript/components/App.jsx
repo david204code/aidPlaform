@@ -81,8 +81,8 @@ class App extends React.Component {
   handleLogin = (data) => {
     this.setState({
       isLoggedin: true,
-      user: data.data.user,
-      userEmail: data.data.user.email,
+      user: data.user,
+      userEmail: data.user.email,
     });
   };
 
