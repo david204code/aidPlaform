@@ -1,4 +1,6 @@
 class AcceptedHelpsController < ApplicationController
+  before_action :get_help
+  before_action :set_accepted, only: [:show, :edit, :update, :destroy]
 
   def new
     @accepted_help = AcceptedHelp.new(user:current_user)
@@ -22,19 +24,25 @@ class AcceptedHelpsController < ApplicationController
   end
 
   def index
-    @accepted_help = AcceptedHelp.all
-    @help = Help.all
-    render json: { data: @accepted_help }
-    # render json: { data: @help + @accepted_help }
-    # render json: { data: @accepted_help + @help }
+    @accepted_helps = @help.accepted_helps
+    # @help = Help.all
+    render json: { data: @accepted_helps }
   end
 
   def show
-    @accepted_help ||= AcceptedHelp.find(params[:id])
-    render json: @accepted_help
+    @accepted_helps ||= @help.accepted_helps.find(params[:id])
+    render json: @accepted_helps
   end
 
   private 
+
+  def get_help
+    @help = Help.find(params[:help_id])
+  end
+
+  def set_accepted
+    @accepted_help = @help.accepted_helps.find(params[:id])
+  end
 
   def accepted_params
     params.fetch(:accepted_help, {}).permit(
