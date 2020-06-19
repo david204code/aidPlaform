@@ -1,4 +1,5 @@
 class HelpsController < ApplicationController
+  before_action :set_help, only: [:show, :edit, :update, :destroy]
 
   def new 
     @help = Help.new(user:current_user)
@@ -53,6 +54,10 @@ class HelpsController < ApplicationController
   end
 
   private
+
+  def set_help
+    @help = Help.find(params[:id])
+  end
 
   def help_params
     params.fetch(:help, {}).permit(
