@@ -79,10 +79,11 @@ class App extends React.Component {
 
 
   handleLogin = (data) => {
+    console.log(data.data.user)
     this.setState({
       isLoggedin: true,
-      user: data.user,
-      userEmail: data.user.email,
+      user: data.data.user,
+      userEmail: data.data.user.email,
     });
   };
 
@@ -101,7 +102,7 @@ class App extends React.Component {
       <Route {...rest} render={(props) => (
         // console.log(this.state.user.email),
         // console.log(localStorage.user),
-        console.log(userEmail),
+        // console.log(userEmail),
         // console.log(localStorage.userEmail),
         // console.log(localStorage.user[21]+localStorage.user[22]),
         !!localStorage.userEmail && localStorage.userEmail != undefined
