@@ -31,7 +31,7 @@ class AcceptedHelpsController < ApplicationController
 
   def show
     @accepted_helps ||= @help.accepted_helps.find(params[:id])
-    render json: @accepted_helps
+    render json: @accepted_helps.help
   end
 
   private 
