@@ -79,7 +79,7 @@ class App extends React.Component {
 
 
   handleLogin = (data) => {
-    console.log(data.data.user)
+    // console.log(data.data.user)
     this.setState({
       isLoggedin: true,
       user: data.data.user,

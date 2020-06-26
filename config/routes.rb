@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   resources :helps do
     resources :accepted_helps
+    get '/accepted_helps/:id/userInfo', to: 'accepted_helps#getUser'
   end
 
   # resources :helps
@@ -16,9 +17,9 @@ Rails.application.routes.draw do
   # get 'acceptedhelps', to: 'accepted_helps#index'
 
   root 'pages#home'
-  get 'pages/home'
-  get 'pages/dashboard'
-  get 'pages/index'
+  # get 'pages/home'
+  # get 'pages/dashboard'
+  # get 'pages/index'
   # root 'messages#index'
 
   # get 'messages', to: 'messages#index'

@@ -47,7 +47,7 @@ class Request extends React.Component {
       .catch(error => console.log('api errors:', error)
     )
     alert("Congrgulation on accepting this request")
-    this.props.history.push("/AcceptedHelp");
+    this.props.history.push("/acceptedhelp");
   };
 
   render() {
