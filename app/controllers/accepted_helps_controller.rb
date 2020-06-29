@@ -35,6 +35,11 @@ class AcceptedHelpsController < ApplicationController
     # render json: @accepted_helps.help.user.email
   end
 
+  def getId
+    @accepted_helps ||= @help.accepted_helps.find(params[:id])
+    render json: @accepted_helps
+  end
+
   def getUser
     @accepted_helps ||= @help.accepted_helps.find(params[:id])
     render json: @accepted_helps.help.user

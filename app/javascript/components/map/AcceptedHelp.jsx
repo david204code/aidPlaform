@@ -9,7 +9,8 @@ class AcceptedHelp extends React.Component {
 
     this.state = {
       acceptedHelp: [],
-      userInfo: []
+      userInfo: [],
+      helpInfo: [],
     };
 
   };
@@ -21,26 +22,36 @@ class AcceptedHelp extends React.Component {
       }
     } = this.props;
 
+    axios.get(`helps/45/accepted_help/59`)
+    .then(response => {
+      // console.log(response)
+      this.setState({acceptedHelp: response.data})
+      // console.log(response.data)
+    })
+    .catch(error => console.log("Error", error))
+
     // axios.get(`/acceptedhelps/${id}`)
     axios.get(`helps/45/accepted_helps/59`)
     .then(response => {
-        console.log(response)
-        this.setState({acceptedHelp: response.data})
-        console.log(response.data)
+        // console.log(response)
+        this.setState({helpInfo: response.data})
+        // console.log(response.data)
     })
     .catch(error =>  console.log("error", error))
     
-    axios.get(`helps/45/accepted_helps/60/userInfo`)
+    axios.get(`helps/45/accepted_helps/59/userInfo`)
     .then(response => {
-      console.log(response)
+      // console.log(response)
       this.setState({userInfo: response.data})
-      console.log(response.data)
+      // console.log(response.data)
     })
     .catch(error => console.log("Error", error))
+
   }
 
   render() {
     const { acceptedHelp } = this.state;
+    const { helpInfo } = this.state;
     const { userInfo } = this.state;
     return (
       <div>
@@ -51,16 +62,20 @@ class AcceptedHelp extends React.Component {
         </div>
 
         <h1>
-          ID: {acceptedHelp.id}
+          Accepted_Help ID: {acceptedHelp.id}
+        </h1>
+
+        <h1>
+          Help ID: {helpInfo.id}
         </h1>
         <h1>
-          Title: {acceptedHelp.title}
+          Title: {helpInfo.title}
         </h1>
         <h1>
-          Description: {acceptedHelp.description}
+          Description: {helpInfo.description}
         </h1>
         <h1>
-          Request type: {acceptedHelp.request_type}
+          Request type: {helpInfo.request_type}
         </h1>
         <h1>
           Contact: {userInfo.email}

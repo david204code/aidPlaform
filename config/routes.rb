@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   resources :helps do
     resources :accepted_helps
+    get '/accepted_help/:id', to: 'accepted_helps#getId'
     get '/accepted_helps/:id/userInfo', to: 'accepted_helps#getUser'
   end
 
