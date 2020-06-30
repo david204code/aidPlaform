@@ -36,13 +36,19 @@ class AcceptedHelpsController < ApplicationController
   end
 
   def getId
-    @accepted_helps ||= @help.accepted_helps.find(params[:id])
-    render json: @accepted_helps
+    @accepted_help ||= @help.accepted_helps.find(params[:id])
+    render json: @accepted_help
   end
 
   def getUser
-    @accepted_helps ||= @help.accepted_helps.find(params[:id])
-    render json: @accepted_helps.help.user
+    @accepted_help ||= @help.accepted_helps.find(params[:id])
+    render json: @accepted_help.help.user
+  end
+
+  def getLast
+    # @accepted_help = AcceptedHelp.last
+    @accepted_help ||= @help.accepted_helps.last
+    render json: @accepted_help
   end
 
   private 

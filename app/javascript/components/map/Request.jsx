@@ -8,7 +8,8 @@ class Request extends React.Component {
     super(props);
     
     this.state = {
-      help: []
+      help: [],
+      accepted: [],
     };
 
     this.acceptRequest = this.acceptRequest.bind(this);
@@ -32,7 +33,9 @@ class Request extends React.Component {
   acceptRequest = (event) => {
     event.preventDefault()
     const { help } = this.state;
+    const { accepted } = this.state;
     console.log(help.id);
+    // console.log(accepted.id);
 
     axios.post(`http://localhost:3000/helps/${help.id}/accepted_helps`, {withCredentials: true, help_id: help.id})
       .then(response => {
@@ -46,8 +49,14 @@ class Request extends React.Component {
       })
       .catch(error => console.log('api errors:', error)
     )
-    alert("Congrgulation on accepting this request")
-    this.props.history.push("/acceptedhelp");
+    alert("Congrgulation on accepting this request");
+    // this.props.history.push(`/dashboard`);
+    // window.location.reload(); 
+    
+    axios.get('')
+
+    this.props.history.push(`/helps/${help.id}/acceptedhelp/${accepted.id}`, {withCredentials: true, help_id: help.id, accepted_id: accepted.id});
+    // this.props.history.push(`/acceptedhelp`);
   };
 
   render() {

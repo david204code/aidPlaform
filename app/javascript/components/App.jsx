@@ -187,9 +187,17 @@ class App extends React.Component {
               path="/request/:id" exact component ={Request}
             />
 
-            <Route
+            {/* <Route
               path ="/acceptedhelp" exact component = {AcceptedHelp}
-            />
+            /> */}
+
+            <Route
+              path ="/helps/:id/acceptedhelp/:id" exact component = {AcceptedHelp}
+            />  
+
+            {/* <Route
+              path ="/acceptedhelp/:id" exact component = {AcceptedHelp}
+            />   */}
 
             <PrivateRoute
               exact path ={"/help"}
