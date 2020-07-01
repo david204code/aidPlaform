@@ -15,7 +15,8 @@ class AcceptedHelpsController < ApplicationController
 
     respond_to do |format|
       if @accepted_help.save
-        format.html { redirect_to @accepted_help, notice: 'Accpeted was successfully created.' }
+        # format.html { redirect_to @accepted_help, notice: 'Accpeted was successfully created.' }
+        format.json { render json: @accepted_help }
       else
         format.html { render :new }
         format.json { render json: @accepted_help.errors, status: :unprocessable_entity }
