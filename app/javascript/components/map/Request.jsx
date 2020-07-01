@@ -10,6 +10,7 @@ class Request extends React.Component {
     this.state = {
       help: [],
       accepted: [],
+      acceptedID: '',
     };
 
     this.acceptRequest = this.acceptRequest.bind(this);
@@ -35,10 +36,26 @@ class Request extends React.Component {
     event.preventDefault()
     const { help } = this.state;
     const { accepted } = this.state;
-    console.log(help.id);
+
+    let acceptedID;
+    // console.log(help.id);
 
     axios.post(`http://localhost:3000/helps/${help.id}/accepted_helps`, {withCredentials: true, help_id: help.id})
       .then(response => {
+        axios.get(`http://localhost:3000/helps/${help.id}/accepted_help/last`)
+        .then(response => {
+          // console.log(response.data)
+          this.setState({
+            accepted: response.data,
+            // acceptedID: response.data.id,
+          })
+          // console.log(this.state.accepted.id);
+          acceptedID = this.state.accepted.id;
+          console.log(acceptedID);
+          this.props.history.push(`/helps/${help.id}/acceptedhelp/${acceptedID}`, {withCredentials: true, help_id: help.id});
+        })
+        .catch(error => console.log(error))
+    
         if (response.data.logged_in) {
           this.props.handleSuccessfulAuth(response.data)
         } else {
@@ -49,17 +66,17 @@ class Request extends React.Component {
       })
       .catch(error => console.log('api errors:', error.response)
     )
-    alert("Congrgulation on accepting this request");
+    alert("Congrgulation on accepting this request");    
     // this.props.history.push(`/dashboard`);
     // window.location.reload(); 
     
-    axios.get(`http://localhost:3000/helps/${help.id}/accepted_help/last`, {withCredentials: true, help_id: help.id})
-      .then(response => {
-        console.log(response.data)
-        this.setState({accepted: response.data})
-        console.log(this.state.accepted.id);
-      })
-      .catch(error => console.log(error))
+    // axios.get(`http://localhost:3000/helps/${help.id}/accepted_help/last`, {withCredentials: true, help_id: help.id})
+    //   .then(response => {
+    //     console.log(response.data)
+    //     this.setState({accepted: response.data})
+    //     console.log(this.state.accepted.id);
+    //   })
+    //   .catch(error => console.log(error))
 
     // this.props.history.push(`/helps/${help.id}/acceptedhelp/${accepted.id}`, {withCredentials: true, help_id: help.id, accepted_id: accepted.id});
     // this.props.history.push(`/acceptedhelp`);
@@ -67,6 +84,7 @@ class Request extends React.Component {
 
   render() {
     const { help } = this.state;
+    const { accepted } = this.state;
     return( 
       <div>
         <section className ="jumbotron jumbotron-fluid text-center">
