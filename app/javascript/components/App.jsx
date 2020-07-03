@@ -192,7 +192,7 @@ class App extends React.Component {
             /> */}
 
             <Route
-              path ="/helps/:id/acceptedhelp/:id" exact component = {AcceptedHelp}
+              path ="/helps/:id/acceptedhelp/:acceptedId" exact component = {AcceptedHelp}
             />  
 
             {/* <Route

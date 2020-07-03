@@ -18,13 +18,13 @@ class AcceptedHelp extends React.Component {
   componentDidMount() {
     const {
       match: {
-        params: { id }
+        params: { id, acceptedId }
       }
     } = this.props;
 
     // axios.get(`helps/45/accepted_help/59`)
     //might need to change accepted_helps to accepted_help
-    axios.get(`/helps/${id}/accepted_helps/${id}`)
+    axios.get(`/helps/${id}/accepted_help/${acceptedId}`)
     .then(response => {
       // console.log(response)
       this.setState({acceptedHelp: response.data})
@@ -34,7 +34,7 @@ class AcceptedHelp extends React.Component {
 
     // axios.get(`helps/45/accepted_helps/59`)
     //might need to change accepted_helps to accepted_help
-    axios.get(`/helps/${id}/accepted_helps/${id}`)
+    axios.get(`/helps/${id}/accepted_helps/${acceptedId}`)
     .then(response => {
         // console.log(response)
         this.setState({helpInfo: response.data})
@@ -42,7 +42,8 @@ class AcceptedHelp extends React.Component {
     })
     .catch(error =>  console.log("error", error))
     
-    axios.get(`/helps/45/accepted_help/59/userInfo`)
+    // axios.get(`/helps/45/accepted_help/59/userInfo`)
+    axios.get(`/helps/${id}/accepted_help/${acceptedId}/userInfo`)
     .then(response => {
       // console.log(response)
       this.setState({userInfo: response.data})

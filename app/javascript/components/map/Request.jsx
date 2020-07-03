@@ -10,7 +10,7 @@ class Request extends React.Component {
     this.state = {
       help: [],
       accepted: [],
-      acceptedID: '',
+      acceptedId: '',
     };
 
     this.acceptRequest = this.acceptRequest.bind(this);
@@ -37,7 +37,7 @@ class Request extends React.Component {
     const { help } = this.state;
     const { accepted } = this.state;
 
-    let acceptedID;
+    let acceptedId;
     // console.log(help.id);
 
     axios.post(`http://localhost:3000/helps/${help.id}/accepted_helps`, {withCredentials: true, help_id: help.id})
@@ -47,12 +47,12 @@ class Request extends React.Component {
           // console.log(response.data)
           this.setState({
             accepted: response.data,
-            // acceptedID: response.data.id,
+            // acceptedId: response.data.id,
           })
           // console.log(this.state.accepted.id);
-          acceptedID = this.state.accepted.id;
-          console.log(acceptedID);
-          this.props.history.push(`/helps/${help.id}/acceptedhelp/${acceptedID}`, {withCredentials: true, help_id: help.id});
+          acceptedId = this.state.accepted.id;
+          console.log(acceptedId);
+          this.props.history.push(`/helps/${help.id}/acceptedhelp/${acceptedId}`, {withCredentials: true, help_id: help.id});
         })
         .catch(error => console.log(error))
     
