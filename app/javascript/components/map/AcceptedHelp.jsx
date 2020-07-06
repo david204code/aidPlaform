@@ -43,7 +43,8 @@ class AcceptedHelp extends React.Component {
     .catch(error =>  console.log("error", error))
     
     // axios.get(`/helps/45/accepted_help/59/userInfo`)
-    axios.get(`/helps/${id}/accepted_help/${acceptedId}/userInfo`)
+    // axios.get(`/helps/${id}/accepted_help/${acceptedId}/userInfo`)
+    axios.get(`/helps/${id}/user`)
     .then(response => {
       // console.log(response)
       this.setState({userInfo: response.data})

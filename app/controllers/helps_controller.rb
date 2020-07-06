@@ -46,11 +46,17 @@ class HelpsController < ApplicationController
     # help 
     render json: { data: @help }
   end
-
+  
   def show 
     @help ||= Help.find(params[:id])
     # render json: { data: @help }
     render json: @help
+  end
+  
+  def helpUser
+    @help ||= Help.find(params[:id])
+    # might need to render the username
+    render json: @help.user
   end
 
   private
