@@ -5,7 +5,7 @@ import axios from 'axios';
 class NewMessageForm extends React.Component {
 
   state = {
-    text: '',
+    title: '',
     conversation_id: this.props.conversation_id
   };
 
@@ -14,11 +14,11 @@ class NewMessageForm extends React.Component {
   };
 
   handleChange = e => {
-    this.setState({ text: e.target.value });
+    this.setState({ title: e.target.value });
   };
 
   handleSubmit = e => {
-    // const text = this.state;
+    // const title = this.state;
     // const conversation_id = this.props;
     const csrfToken = document.querySelector('[name=csrf-token]').content
     axios.defaults.headers.common['X-CSRF-TOKEN'] = csrfToken
@@ -26,7 +26,7 @@ class NewMessageForm extends React.Component {
     axios
     .post("http://localhost:3000/messages",
     {
-      text: this.state.text,
+      title: this.state.title,
       conversation_id: this.props.conversation_id 
     },
     { withCredentials: true }
@@ -44,7 +44,7 @@ class NewMessageForm extends React.Component {
     //   headers: HEADERS,
     //   body: JSON.stringify(this.state)
     // });
-    // this.setState({ text: '' });
+    // this.setState({ title: '' });
   };
 
   render = () => {
@@ -55,7 +55,7 @@ class NewMessageForm extends React.Component {
           <br />
           <input
             type="text"
-            value={this.state.text}
+            value={this.state.title}
             onChange={this.handleChange} 
           />
           <input type="submit" />
