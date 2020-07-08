@@ -44,7 +44,8 @@ class HelpsController < ApplicationController
     @help = Help.all
     # @help = Help.first
     # help 
-    render json: { data: @help }
+    # render json: { data: @help }
+    render json: @help
   end
   
   def show 

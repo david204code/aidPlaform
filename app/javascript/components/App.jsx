@@ -167,6 +167,7 @@ class App extends React.Component {
                 <Dashboard {...props}
                   handleLogin = {this.handleLogin}
                   isLoggedin = {this.state.isLoggedin}
+                  user = {this.state.user}
                 />
               )}
             />

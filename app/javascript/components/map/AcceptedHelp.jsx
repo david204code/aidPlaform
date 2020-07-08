@@ -8,9 +8,9 @@ class AcceptedHelp extends React.Component {
     super(props);
 
     this.state = {
-      acceptedHelp: [],
-      userInfo: [],
-      helpInfo: [],
+      acceptedHelp: {},
+      userInfo: {},
+      helpInfo: {},
     };
 
   };
@@ -85,6 +85,17 @@ class AcceptedHelp extends React.Component {
         <h1>
           Contact: {userInfo.email}
         </h1>
+
+        <div className ="text-center"> 
+          <h1>Messaging {userInfo.email} here</h1>
+          <div>
+            <small>
+              Box here
+            </small>
+          </div>
+        </div>
+
+
       </div>
     )
   };
