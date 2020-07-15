@@ -45,7 +45,7 @@ class Map extends React.Component {
     axios.get('/helps.json')
     .then(data => {
       let info = []
-      data.data.data.map( (data) => {
+      data.data.map( (data) => {
         info.push(
           {
             id: data.id,
