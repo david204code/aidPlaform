@@ -1,6 +1,33 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import styled from 'styled-components';
+
+const Card = styled.div`
+  border: 1px solid #efefef;
+  background: #fff;
+  text-align: center;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 20px;
+  width: 100%;
+  // padding: 20px;
+`
+
+const MenuOption = styled.div`
+  padding: 10px 0 10px 0;
+  font-size: 20px;
+  font-weight: 600;
+`
+
+const LinkWrapper = styled.div`
+  margin: 30px 0 20px 0;
+  height: 50px;
+
+  a {
+    color: #964B00;
+  }
+`
 
 class Navbar extends React.Component {
 
@@ -33,36 +60,20 @@ class Navbar extends React.Component {
           <button onClick={() => this.handleLogOutClick()}>Logout</button> :
           null
         }
-        <nav className ="text-center">
-          <Link 
-            to =""
-          >
-            Home
-          </Link>
-
-          <Link
-            to ="/map"
-          >
-            <button>Map</button>
-          </Link>
-
-          <Link
-            to ="/help"
-          >
-            <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-              Submit a post
-            </button>
-          </Link>
-
-          <Link
-            to ="/dashboard"
-          >
-            <button className ="">
-              Dashboard
-            </button>
-          </Link>
-
-        </nav>
+        <Card>
+          <LinkWrapper>
+            <Link to =""><MenuOption>Home</MenuOption></Link>
+          </LinkWrapper>
+          <LinkWrapper>
+            <Link to ="/map"><MenuOption>Map</MenuOption></Link>
+          </LinkWrapper>
+          <LinkWrapper>
+            <Link to ="/help"><MenuOption>Submit a post</MenuOption></Link>
+          </LinkWrapper>
+          <LinkWrapper>
+            <Link to ="/dashboard"><MenuOption>Dashboard</MenuOption></Link>
+          </LinkWrapper>
+        </Card>
       </div>
     );
   };
