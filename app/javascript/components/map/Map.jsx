@@ -105,7 +105,7 @@ class Map extends React.Component {
           <h1>Map, get involved now!</h1>
           <h1>Status: {this.props.loggedInStatus}</h1>
           <div className ="offset-2">
-            <h4 className ="text-left">Hello {this.props.user} </h4>
+            <h4 className ="text-left">Hello {this.props.user.email} </h4>
           </div>
         </div>
 

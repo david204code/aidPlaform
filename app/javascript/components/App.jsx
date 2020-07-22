@@ -107,7 +107,7 @@ class App extends React.Component {
         // console.log(localStorage.user[21]+localStorage.user[22]),
         !!localStorage.userEmail && localStorage.userEmail != undefined
         // this.state.isLoggedin === true
-        ? <Component {...props}/>
+        ? <Component {...props} {...rest}/>
         : <Redirect to={{
           pathname: '/notice',
           state: { from: props.location }
@@ -174,7 +174,8 @@ class App extends React.Component {
 
             <PrivateRoute 
               exact path ={"/map"}
-              component = { Map }
+              component ={ Map }
+              user ={this.state.user}
               // render ={props => (
               //   <Map {...props}
               //     handleLogin = {this.handleLogin}
@@ -202,7 +203,8 @@ class App extends React.Component {
 
             <PrivateRoute
               exact path ={"/help"}
-              component = { Help }
+              component ={ Help }
+              user ={this.state.user}
               // render ={props => (
               //     <Help {...props}
               //       handleLogin = {this.handleLogin}

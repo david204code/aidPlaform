@@ -107,7 +107,7 @@ class Help extends React.Component {
           <h1>Thank you for Volunteering!</h1>
           <p>We are excited you want to volunteer. Fill in the form below</p>
           <div className ="offset-2">
-            <h4 className ="text-left">Hello {this.props.user} </h4>
+            <h4 className ="text-left">Hello {this.props.user.email} </h4>
           </div>
         </div>
 
