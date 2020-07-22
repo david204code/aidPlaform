@@ -41,11 +41,13 @@ class HelpsController < ApplicationController
   end
 
   def index
-    @help = Help.all
+    @help = Help.includes(:accepted_helps)
+    # @help = Help.includes(:accepted_helps).map{|help| help.accepted_helps}
+    # @help = Help.all
     # @help = Help.first
     # help 
     # render json: { data: @help }
-    render json: @help
+    render json: @help.to_json( :methods => [:accepted_helps])
   end
   
   def show 
