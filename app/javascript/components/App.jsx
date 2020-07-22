@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import axios from 'axios';
 import Navbar from '../components/pages/Navbar';
+import Welcome from '../components/pages/Welcome';
 import Home from '../components/pages/Home';
 import Dashboard from '../components/pages/Dashboard';
 import Map from '../components/map/Map';
@@ -131,7 +132,16 @@ class App extends React.Component {
 
           <Switch>
             <Route 
-              exact path ={"/"}
+              exact path ={"/"}   
+              render ={props => (
+                <Welcome {...props}
+
+                />
+              )}            
+            />
+
+            <Route 
+              exact path ={"/home"}
               render ={props => (
                 <Home {...props}
                   isLoggedin = {this.state.isLoggedin}
